@@ -122,7 +122,19 @@ rake db:test:prepare
 
 Video 10.4 Test-First Show An Event - rspec --format doc #shows the describe and it statements OR rspec -f d
 
-Video 10.5 Test-First Link Pages -
+Video 10.5 Test-First Link Pages - Uncomment Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f } in spec/rails_helper.rb
+Create new file in spec/support/attributes.rb
+def movie_attributes(overrides = {})
+  { 
+    title: "Iron Man", 
+    rating: "PG-13",
+    total_gross: 318412101,
+    description: "Tony Stark builds an armored suit to fight the throes of evil",
+    released_on: "2008-05-02"
+  }.merge(overrides)
+end
+movie = Movie.create(movie_attributes(total_gross: 300_000_000)) #overriding the total_gross value)
+
 Video 10.6 Test-First Free Events -
 Video 10.7 Test-First Check In Browser -
 
