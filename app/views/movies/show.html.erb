@@ -1,0 +1,24 @@
+<article>
+  <header>
+    <h2><%= @movie.title %></h2>
+  </header>
+  <p>
+    <%= @movie.description %>
+  </p>
+  <table>
+    <tr>
+      <th style="text-align: right">Released:</th>
+      <td><%= @movie.released_on.to_s(:release_date) %></td>
+    </tr>
+    <tr>
+      <th style="text-align: right">Rating:</th>
+      <td><%= @movie.rating %></td>
+    </tr>
+    <tr>
+      <th style="text-align: right">Total Gross:</th>
+      <td><%= format_total_gross(@movie) %></td>
+    </tr>
+  </table>
+</article>
+<br>
+<%= link_to "All Movies", root_path %>
