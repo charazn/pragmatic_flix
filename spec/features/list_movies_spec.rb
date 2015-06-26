@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 describe "Viewing list of movies" do # example group
 
   it "shows the movies" do # code example

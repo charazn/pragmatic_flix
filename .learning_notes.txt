@@ -111,13 +111,17 @@ link_to(event.name, event)
 
 Video 10.1 Test-First Setup - rails new events —skip-test-unit, or -T 
 rails g rspec:install
+
 Video 10.2 Test-First List Events - rails g controller events --no-test-framework
+
 Video 10.3 Test-First Event Model - rails g controller event --no-test-framework, rake db:test:prepare #copies schema from development db into the test db
 OR rake db:schema:load RAILS_ENV=test
 Each time a new migration is run in the development db, always follow up with running rake db:test:prepare to copy the schema over to the test db
 rake db:migrate
 rake db:test:prepare
-Video 10.4 Test-First Show An Event -
+
+Video 10.4 Test-First Show An Event - rspec --format doc #shows the describe and it statements OR rspec -f d
+
 Video 10.5 Test-First Link Pages -
 Video 10.6 Test-First Free Events -
 Video 10.7 Test-First Check In Browser -
