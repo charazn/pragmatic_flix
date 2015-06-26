@@ -1,0 +1,129 @@
+Cheats.pdf
+
+Rake
+rake -T
+see a list of all Rake tasks
+rake -T db
+see a list of only the database-specific Rake tasks
+rake db:test:prepare
+copy the schema from the development database to the test database
+
+Generate a Resources
+rails g resource name_of_resource field:type field:type......
+generates a resource with a given name along with fields and types example: rails g resource registration name:string
+email:string how_heard:string event:references
+
+result: 
+A migration for creating the registrations database table. A Registration model with a belongs_to declaration.
+An empty RegistrationsController.
+A set of resource routes.
+
+Common Validation Methods
+validates :how_heard, inclusion: { in: ["Blog", "Newsletter"] }
+validates that the value of the specified attribute is available in the specified enumerable (array)
+validates :role, :exclusion => { :in => ["Admin", "SuperUser"] }
+validates that the value of the specified attribute is not available in the specified enumerable (array)
+
+Setting up RSpec
+group :test, :development do gem "rspec-rails"
+end
+group :test do gem "capybara"
+end
+
+rails generate rspec:install
+
+Running Specs
+rspec path/to/file:linenumber 
+example: rspec spec/features/list_events_spec.rb:9 
+
+Common Form Helper Methods
+<%= f.select :how_heard, ["Blog", "Newsletter"] %>
+returns a select tag and a series of contained option tags for the specified attribute
+
+==================================================
+Conventions.pdf
+Put as much business logic into the model as you can. 
+I DON’T AGREE
+
+Event Model
+def free?
+price.blank? || price.zero?
+end
+def spots_left
+capacity - registrations.count
+end
+def sold_out?
+spots_left.zero?
+end
+
+==================================================
+Videos (2015 June)
+
+Video 1 Intro - (blank means nothing I don’t already know at this point in time)
+Video 2 Create app - bundle check
+Video 3 Views & Controllers - 
+Video 4 Models - rake -T, rake db:migrate:status
+Video 5 Connecting mvc - number_to_currency(event.price)
+Video 6 Migrations - 
+Video 7 Helpers - pluralize(@events.size, ‘Event’), truncate(event.description, length: 35, separator: ‘ ‘)
+<% if event.price == 0 %>
+  <td>Free</td>
+<% else %>
+  <td><%= number_to_currency(event.price) %>
+<% end%>
+to
+<td><%= format_price(event) %></td>
+app/helpers/events_helper.rb
+module EventsHelper
+  def format_price(event)
+    if event.price == 0  # Or event.free?
+      <strong>“Free”</strong>.html_safe 
+      # Or content_tag(:strong, “Free”)
+    else 
+      number_to_currency(event.price)
+    end
+  end
+end
+
+app/models/event.rb
+class Event < ActiveRecord::Base
+  def free?
+    price.blank? || price.zero?
+  end
+end
+
+rails console
+>> Time:DATE_FORMATS to show all possible date formats in Rails
+
+config/initializers/time_formats.rb
+Time::DATE_FORMATS[:default] = “%d %B, %Y at %I:%M %p”
+
+app/views/events/index.html.erb
+<%= event.starts_at %>
+
+Video 8 Routes: Show Page - Good explanation for routing and params[:id]
+Video 9 Routes: Linking Pages - app.events_path, app.events_url
+localhost:3000/rails/info/routes
+link_to(event.name, “/events/#{event.id}”)
+get ‘/events/:id’ => ‘events#show’, as: ‘event’
+app.event_path(event.id) 
+link_to(event.name, event)
+
+Video 10.1 Test-First Setup - rails new events —skip-test-unit, or -T 
+rails g rspec:install
+Video 10.2 Test-First List Events - rails g controller events --no-test-framework
+Video 10.3 Test-First Event Model - rails g controller event --no-test-framework, rake db:test:prepare #copies schema from development db into the test db
+OR rake db:schema:load RAILS_ENV=test
+Each time a new migration is run in the development db, always follow up with running rake db:test:prepare to copy the schema over to the test db
+rake db:migrate
+rake db:test:prepare
+Video 10.4 Test-First Show An Event -
+Video 10.5 Test-First Link Pages -
+Video 10.6 Test-First Free Events -
+Video 10.7 Test-First Check In Browser -
+
+==================================================
+
+==================================================
+
+==================================================
