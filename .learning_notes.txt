@@ -180,7 +180,23 @@ Event.where('starts_at <= ?', Time.now).order('starts_at')
 
 Movie.where(rating: ["PG", "PG-13"])
 
-Video 16 Migrations Revisited
+released_on: 1.month.from_now
+released_on: 1.month.ago
+released_on: 3.months.ago
+expect(page).not_to have_text(movie.title)
+expect(Movie.released).to eq([movie1, movie2, movie3])
+
+Video 16 Migrations Revisited -
+expect(page).to have_selector("img[src$='#{movie.image_file_name}']")
+
+def image_for(movie)
+  if movie.image_file_name.blank? || movie.image_file_name.nil?
+    image_tag("placeholder.png")
+  else
+    image_tag(movie.image_file_name)
+  end
+end
+
 
 Video 17 Layouts
 

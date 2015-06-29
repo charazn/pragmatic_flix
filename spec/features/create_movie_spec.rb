@@ -12,6 +12,10 @@ describe "Create a movie" do
     fill_in 'Description', with: "New superhero movie that saves villians and kills innocent"
     fill_in 'Released on', with: (Time.now).to_s
     fill_in 'Total gross', with: 20_000_000 
+    fill_in 'Image file name', with: "american sniper.jpg"
+    # fill_in 'Cast', with: ["Tom Cruise", "Bradley Cooper", "Tom Hanks"]
+    fill_in 'Director', with: "Charlie Chaplin"
+    # fill_in 'Duration', with: 138
 
     click_button 'Create Movie'
     expect(current_path).to eq(movie_path(Movie.last))

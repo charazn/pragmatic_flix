@@ -1,5 +1,9 @@
 <%= form_for(@movie) do |f| %>
   <p>
+    <%= f.label :image_file_name %><br>
+    <%= f.text_field :image_file_name %>
+  </p>
+  <p>
     <%= f.label :title %><br>
     <%= f.text_field :title, autofocus: true %>
   </p>
@@ -18,7 +22,11 @@
   <p>
     <%= f.label :total_gross %><br>
     <%= f.number_field :total_gross %>
-  </p>  
+  </p>
+  <p>
+    <%= f.label :director %><br>
+    <%= f.text_field :director %>
+  </p>
   <p>
     <%= f.submit %>
   </p>
