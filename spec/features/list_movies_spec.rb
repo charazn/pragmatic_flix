@@ -35,4 +35,14 @@ describe "Viewing list of movies" do # example group
 
   end
   
+  it "does not show movies that are not released" do
+
+    movie = Movie.create(movie_attributes(released_on: 1.month.from_now))
+  
+    visit movies_url
+
+    expect(page).not_to have_text(movie.title)
+
+  end
+
 end

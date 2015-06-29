@@ -165,9 +165,20 @@ fill_in "Released on", with: (Time.now.year - 1).to_s
 Video 13 Partials -
 autofocus: true
 
-Video 14 Destroy
+Video 14 Destroy - 
+expect(page).not_to have_text(movie.title)
 
-Video 15 Custom Queries
+Video 15 Custom Queries - 
+Event.order("name desc")
+Event.find_by(name: "name of event", location: "Denver, CO") #finding record with two attributes
+Event.where(name: "name of event")
+Event.where.not(name: "name of event")
+Event.where('price <= 10.00')
+Event.where('price <= ?', max_price)
+Event.where('starts_at <= ?', Time.now).to_sql #returns sql statement without running it
+Event.where('starts_at <= ?', Time.now).order('starts_at')
+
+Movie.where(rating: ["PG", "PG-13"])
 
 Video 16 Migrations Revisited
 
