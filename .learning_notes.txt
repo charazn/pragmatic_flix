@@ -135,8 +135,32 @@ def movie_attributes(overrides = {})
 end
 movie = Movie.create(movie_attributes(total_gross: 300_000_000)) #overriding the total_gross value)
 
-Video 10.6 Test-First Free Events -
-Video 10.7 Test-First Check In Browser -
+click_link movie.title
+expect(current_path).to eq(movie_path(movie))
+
+Video 10.6 Test-First Free Events - spec/models/model_spec.rb
+
+Video 10.7 Test-First Check In Browser - Movie.create!([{}]), with ! will raise exception if object not created, eg. validation fails
+
+Video 11.1 Forms:Editing - 
+expect(find_field('Title').value).to eq(movie.title)
+click_button 'Update Movie'
+expect(current_path).to eq(movie_path(movie))
+fill_in 'Title', with: "Updated Movie Title"
+
+Video 11.2 Forms:Editing - 
+In Rails, @instance variables do not live on after the action runs, eg. def update will not have access to the @movie instance variable in def edit.
+
+If you want all of a movie's attributes to be updatable without listing them out, you can call permit!, eg. params.require(:movie).permit!
+
+<form action="/movies/1" method="post">
+  <input name="_method" type="hidden" value="patch" />
+  ...
+</form>
+The action says that submitting this form will send the data to /movies/1. By default, forms are submitted with the POST HTTP verb as indicated by the value of the method attribute here. By convention in Rails, POST requests are used to create things. But in this case, Rails knows that we're trying to update a movie, not create a movie. And by convention in Rails, PATCH requests are used to update things. So Rails effectively overrides the HTTP verb by adding a hidden field named _method with a value of patch. (It has to fake it with a hidden field because web browsers can't natively send PATCH requests.)
+
+Video 12 Forms:Creating
+fill_in "Released on", with: (Time.now.year - 1).to_s
 
 ==================================================
 

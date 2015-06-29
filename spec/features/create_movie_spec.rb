@@ -7,7 +7,6 @@ describe "Create a movie" do
     click_link 'Add New Movie'
     expect(current_path).to eq(new_movie_path)
 
-
     fill_in 'Title', with: "New Movie Title"
     fill_in 'Rating', with: "R"
     fill_in 'Description', with: "New superhero movie that saves villians and kills innocent"
