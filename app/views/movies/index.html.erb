@@ -24,6 +24,10 @@
         <th style="text-align: right">Total Gross:</th>
         <td><%= format_total_gross(movie) %></td>
       </tr>
+      <tr>
+        <th style="text-align: right">Duration:</th>
+        <td><%= movie.duration %> min</td>
+      </tr>
     </table>
   </article>
 <% end %>

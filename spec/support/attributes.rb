@@ -6,8 +6,8 @@ def movie_attributes(overrides = {})
     description: "Tony Stark builds an armored suit to fight the throes of evil",
     released_on: "2008-05-02",
     image_file_name: "american_sniper.jpg",
-    director: "Charlie Chaplin"
+    director: "Charlie Chaplin",
+    duration: 138
     # cast: ["Tom Cruise", "Bradley Cooper", "Tom Hanks"],
-    # duration: 138
   }.merge(overrides)
 end
