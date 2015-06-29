@@ -159,8 +159,37 @@ If you want all of a movie's attributes to be updatable without listing them out
 </form>
 The action says that submitting this form will send the data to /movies/1. By default, forms are submitted with the POST HTTP verb as indicated by the value of the method attribute here. By convention in Rails, POST requests are used to create things. But in this case, Rails knows that we're trying to update a movie, not create a movie. And by convention in Rails, PATCH requests are used to update things. So Rails effectively overrides the HTTP verb by adding a hidden field named _method with a value of patch. (It has to fake it with a hidden field because web browsers can't natively send PATCH requests.)
 
-Video 12 Forms:Creating
+Video 12 Forms:Creating -
 fill_in "Released on", with: (Time.now.year - 1).to_s
+
+Video 13 Partials -
+autofocus: true
+
+Video 14 Destroy
+
+Video 15 Custom Queries
+
+Video 16 Migrations Revisited
+
+Video 17 Layouts
+
+Video 18 Assets
+
+Video 19 Validations
+
+Video 20 The Flash
+
+Video 21 One-to-Many: Models
+
+Video 22 One-to-Many: Nested Resources
+
+Video 23 One-to-Many: Forms
+
+Video 24 One-to-Many: Logic
+
+Video 25 Deployment
+
+Video 26 Wrap Up
 
 ==================================================
 
