@@ -1,15 +1,17 @@
 Rails.application.routes.draw do
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
 
-  # You can have the root of your site routed with "root"
-  # root 'welcome#index'
   root 'movies#index'
 
-  # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
   get '/movies' => 'movies#index'
   get '/movies/:id' => 'movies#show', as: 'movie'
   get '/movies/:id/edit' => 'movies#edit', as: 'edit_movie'
+  patch 'movies/:id' => 'movies#update'
+  #By convention in Rails, POST requests are used to create things. 
+  #But Rails knows that we're trying to update a movie, not create a movie. 
+  #By convention in Rails, PATCH requests are used to update things. 
+  #Rails effectively overrides the HTTP verb by adding a hidden field named _method 
+  #with a value of patch. 
+  #(It has to fake it with a hidden field because web browsers can't natively 
+  #send PATCH requests.)
 
 end
