@@ -35,6 +35,6 @@
   </table>
 </article>
 <br>
-<%= link_to "All Movies", root_path %> |
+
 <%= link_to("Edit Movie", edit_movie_path(@movie)) %> | 
 <%= link_to "Delete Movie", movie_path(@movie), method: :delete, data: { confirm: 'Do you really want to delete this movie?' } %>

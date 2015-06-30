@@ -122,6 +122,10 @@ rake db:test:prepare
 
 Video 10.4 Test-First Show An Event - rspec --format doc #shows the describe and it statements OR rspec -f d
 
+A nifty trick is to add the following line to the .rspec file:
+--require spec_helper
+With that in place, you don't have to require spec_helper at the top of every spec file.
+
 Video 10.5 Test-First Link Pages - Uncomment Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f } in spec/rails_helper.rb
 Create new file in spec/support/attributes.rb
 def movie_attributes(overrides = {})
@@ -247,7 +251,8 @@ Video 18.2 Assets: New Design -
 
 
 
-Video 19 Validations
+Video 19.1 Validations 1 -
+Video 19.2 Validations 2 -
 
 Video 20 The Flash
 
