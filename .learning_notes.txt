@@ -224,8 +224,28 @@ def movie_params
 end
 
 Video 17 Layouts
+stylesheet_link_tag generates the following link tags for the app's stylesheets, which we'll use in the next section.
+javascript_include_tag generates the following script tags for the JavaScript files used by the app (beyond the scope of this course)
+csrf_meta_tags generates meta tags for a token that's used internally by Rails to add hidden security fields to forms (don't worry about it)
 
-Video 18 Assets
+Video 18.1 Assets: Stylesheets -
+app/assets contains assets that are specific to this application
+lib/assets contains assets for custom libraries that you write and share across your Rails apps
+vendor/assets contains third-party assets that are used by this application such as an open-source lightbox or calendaring library
+
+app/assets/application.css is actually a valid CSS file, but all the lines are in CSS comments. Embedded in those comments are special directives that start with an equal sign (=). Rails uses these directives to figure out which stylesheet files should be automatically included when the application.css file is requested.
+
+The require_tree directive includes all files in the specified directory and any subdirectories. Using a dot (.) as the directory name means the "current directory", so all CSS files in the app/assets/stylesheets directory (and any subdirectories) will be included.
+
+The require_self directive simply includes the contents of the current file (application.css). So if we had any CSS below the comments, it would get included.
+
+So the application.css file is really just a manifest: a list of other files to include in the final application.css file. The benefit of this approach is that we can organize styles into different stylesheets, in much the same way we strive to organize our source code into separate files. Rails then takes care of rolling all those stylesheet files up into one application.css file that gets delivered back to the browser.
+
+^If you want to see the final application.css that gets sent to the browser, browse to http://localhost:3000/assets/application.css.
+
+Video 18.2 Assets: New Design -
+
+
 
 Video 19 Validations
 

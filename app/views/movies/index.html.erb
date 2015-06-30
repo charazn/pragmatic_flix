@@ -2,11 +2,12 @@
 
 <%= link_to "Add New Movie", new_movie_path %>
 
+
 <% @movies.each do |movie| %>
-  <article>
+  <article class="movie">
     <header>
-      <h2><%= link_to(movie.title, movie) %></h2>
       <%= image_for(movie) %>
+      <h2><%= link_to(movie.title, movie) %></h2>
     </header>
     <p>
       <%= truncate(movie.description, length: 40, separator: ' ') %>
@@ -18,7 +19,8 @@
       </tr>
       <tr>
         <th style="text-align: right">Released:</th>
-        <td><%= movie.released_on.to_s(:release_date) %></td>
+        <td><%= movie.released_on.to_s(:release_date) %>
+          (<%= time_ago_in_words(movie.released_on) %> ago)</td>
       </tr>
       <tr>
         <th style="text-align: right">Rating:</th>
@@ -33,5 +35,12 @@
         <td><%= movie.duration %> min</td>
       </tr>
     </table>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br> <!-- need all these br to push the vertical space down so that the next movie img will be pulled to the right on the next vertical space  -->
   </article>
 <% end %>

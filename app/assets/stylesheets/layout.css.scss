@@ -1,0 +1,26 @@
+@import "colors";
+
+header.app-header {
+  color: $app-grey;
+  background: $app-blue;
+  padding: 5px;
+  border-bottom: 3px solid darken($app-blue, 10%);
+  h1 {
+    text-align: center;
+    text-transform: uppercase;
+  }
+}
+
+footer.app-footer {
+  color: $app-blue;
+  background: $app-grey;
+  text-align: center;
+  padding: 5px;
+  border-top: 3px solid darken($app-grey, 10%);
+}
+
+aside.app-sidebar {
+  float: right;
+  background: $app-grey;
+  width: 200px;
+}
