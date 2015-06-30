@@ -197,6 +197,31 @@ def image_for(movie)
   end
 end
 
+fill_in 'Cast', with: "Tom Cruise, Bradley Cooper, Tom Hanks" #with: "has to be one string"
+expect(page).to have_text(movie.cast.join(", "))
+
+def movie_attributes(overrides = {})
+  { 
+    title: "Iron Man", 
+    rating: "PG-13",
+    total_gross: 318412101,
+    description: "Tony Stark builds an armored suit to fight the throes of evil",
+    released_on: "2008-05-02",
+    image_file_name: "american_sniper.jpg",
+    director: "Charlie Chaplin",
+    duration: 138,
+    cast: ["Tom Cruise", "Bradley Cooper", "Tom Hanks"] #can be 3 items in an Array because that attribute is an Array as defined in the migration
+  }.merge(overrides)
+end
+
+def movie_params
+  params.require(:movie).permit(:title, :description, :rating, :released_on, 
+                                    :total_gross, :image_file_name, :director, 
+                                    :duration, :cast)
+  .tap do |p| 
+    p[:cast] = p[:cast].split(",").map(&:strip)
+  end
+end
 
 Video 17 Layouts
 

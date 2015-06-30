@@ -13,6 +13,10 @@
     </p>
     <table>
       <tr>
+        <th style="text-align: right">Cast:</th>
+        <td><%= movie.cast.join(", ") %></td>
+      </tr>
+      <tr>
         <th style="text-align: right">Released:</th>
         <td><%= movie.released_on.to_s(:release_date) %></td>
       </tr>

@@ -32,6 +32,10 @@
     <%= f.number_field :duration %>
   </p>
   <p>
+    <%= f.label :cast %><br>
+    <%= f.text_field :cast, value: @movie.cast.join(", ") %>
+  </p>
+  <p>
     <%= f.submit %>
   </p>
 <% end %>

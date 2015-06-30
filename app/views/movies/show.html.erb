@@ -28,6 +28,10 @@
       <th style="text-align: right">Duration:</th>
       <td><%= @movie.duration %> min</td>
     </tr>
+    <tr>
+      <th style="text-align: right">Cast:</th>
+      <td><%= @movie.cast.join(", ") %></td>
+    </tr>
   </table>
 </article>
 <br>

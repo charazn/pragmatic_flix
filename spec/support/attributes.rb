@@ -7,7 +7,7 @@ def movie_attributes(overrides = {})
     released_on: "2008-05-02",
     image_file_name: "american_sniper.jpg",
     director: "Charlie Chaplin",
-    duration: 138
-    # cast: ["Tom Cruise", "Bradley Cooper", "Tom Hanks"],
+    duration: 138,
+    cast: ["Tom Cruise", "Bradley Cooper", "Tom Hanks"]
   }.merge(overrides)
 end
