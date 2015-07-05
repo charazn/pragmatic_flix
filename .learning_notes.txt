@@ -252,6 +252,23 @@ Video 18.2 Assets: New Design -
 
 
 Video 19.1 Validations 1 -
+object.valid?
+object.errors.any?
+object.errors.full_messages
+object.errors[:name]
+
+validates :description, length: { minimum: 25 }
+validates :price, numericality: { greater_than_or_equal_to: 0 }
+validates :capacity, numericality: { only_integer: true, greater_than: 0 }
+validates :image_file_name, allow_blank: true, format: {
+  with: /\w+\.(gif|jpg|png)\z/i,
+  message: "must reference a gif, jpg, or png image"
+}
+
+# None of model specs actually hit the database. Don't have to create movies in the database to test whether they're valid. Can just initialize a movie using Movie.new and calling its valid? method to run the validations. The  model specs run a lot faster since they don't interact with the database.
+
+
+
 Video 19.2 Validations 2 -
 
 Video 20 The Flash
