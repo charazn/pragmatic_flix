@@ -267,9 +267,9 @@ validates :image_file_name, allow_blank: true, format: {
 
 # None of model specs actually hit the database. Don't have to create movies in the database to test whether they're valid. Can just initialize a movie using Movie.new and calling its valid? method to run the validations. The  model specs run a lot faster since they don't interact with the database.
 
-
-
 Video 19.2 Validations 2 -
+When we submit a form with both valid and invalid pieces of data, we don't want to lose those valid pieces of data, when we reshow the form, this would happen with a redirect. Instead, we use render :new, this doesn't actually call the new action, instead it renders the new template, and prepopulates the form with the valid pieces of data that were captured in the @event instance variable. This way we preserve all the valid form data and can highlight the invalid fields.
+
 
 Video 20 The Flash
 

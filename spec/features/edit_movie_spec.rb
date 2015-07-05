@@ -25,4 +25,15 @@ describe "Edit an individual movie" do
 
   end
 
+  it "does not update the movie if it's invalid" do
+    movie = Movie.create(movie_attributes)
+    visit edit_movie_path(movie)
+
+    fill_in 'Title', with: "New Movie Title"
+
+    click_button 'Update Movie'
+    expect(page).to have_text('error')
+
+  end
+
 end

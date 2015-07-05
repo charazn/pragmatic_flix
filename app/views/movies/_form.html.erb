@@ -1,4 +1,6 @@
 <%= form_for(@movie) do |f| %>
+  <%= render 'shared/errors' %>
+
   <p>
     <%= f.label :image_file_name %><br>
     <%= f.text_field :image_file_name %>
