@@ -270,8 +270,14 @@ validates :image_file_name, allow_blank: true, format: {
 Video 19.2 Validations 2 -
 When we submit a form with both valid and invalid pieces of data, we don't want to lose those valid pieces of data, when we reshow the form, this would happen with a redirect. Instead, we use render :new, this doesn't actually call the new action, instead it renders the new template, and prepopulates the form with the valid pieces of data that were captured in the @event instance variable. This way we preserve all the valid form data and can highlight the invalid fields.
 
-
 Video 20 The Flash
+flash[:notice] = "Movie successfully updated!"
+redirect_to @movie, notice: "Movie successfully updated!"
+
+<% flash.each do |key, value| %>
+  <%= content_tag(:p, value, :class => "flash #{key}") %>
+<% end %>
+Notice that by using an iterator we don't need a conditional because the iterator only runs for the keys that are in the flash.
 
 Video 21 One-to-Many: Models
 

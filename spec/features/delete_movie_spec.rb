@@ -8,6 +8,7 @@ describe "Delete a movie" do
 
     click_link 'Delete Movie'
     expect(current_path).to eq(movies_path)
+    expect(page).to have_text('Movie successfully deleted!')
     expect(page).not_to have_text(movie.title)
 
   end
