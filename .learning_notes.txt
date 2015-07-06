@@ -294,7 +294,15 @@ A controller should only concern itself with one resource at a time.
 localhost:3000/rails/info/routes to see all the routes just like rake routes
 
 Video 23 One-to-Many: Forms
+<%= render 'shared/errors', object: @registration %>
+<% if object.errors.any? %> in shared/_errors.html.erb file
+<%= link_to "Show Registration", event_registration_path(@event, @registration) %>
+or <%= link_to "Show Registration", [@event, @registration] %>
 
+# From Krzys. Must reload the page (with visit), because the reviews that are created are not reflected on the view yet, even though it is saved in the test db!
+visit movie_url(movie)
+click_link "2 reviews"
+expect(current_path).to eq(movie_reviews_path(movie))
 
 Video 24 One-to-Many: Logic
 
