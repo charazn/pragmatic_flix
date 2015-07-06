@@ -304,6 +304,18 @@ visit movie_url(movie)
 click_link "2 reviews"
 expect(current_path).to eq(movie_reviews_path(movie))
 
+# Alternative choice showing radio buttons
+<li class="required stars">
+  <%= f.label :stars %>         
+  <% Review::STARS.each do |star| %>
+    <span class="star">
+      <%= f.radio_button :stars, star %> <%= star %>
+    </span>
+  <% end %>
+</li>
+create_review_spec.rb
+choose "review_stars_3"
+
 Video 24 One-to-Many: Logic
 
 Video 25 Deployment
