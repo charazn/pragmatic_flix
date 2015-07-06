@@ -11,3 +11,12 @@ def movie_attributes(overrides = {})
     cast: ["Tom Cruise", "Bradley Cooper", "Tom Hanks"]
   }.merge(overrides)
 end
+
+def review_attributes(overrides = {})
+  { 
+    name: "Jason", 
+    stars: 4,
+    comment: "Movie about the top sniper in American military history.",
+    movie: Movie.find_by(title: "American Sniper")
+  }.merge(overrides)
+end

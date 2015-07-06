@@ -279,7 +279,14 @@ redirect_to @movie, notice: "Movie successfully updated!"
 <% end %>
 Notice that by using an iterator we don't need a conditional because the iterator only runs for the keys that are in the flash.
 
-Video 21 One-to-Many: Models
+Video 21.1 and 21.2 One-to-Many: Models
+rails g resource Registration name:string email:string heard_from:string event:references --no-test-framework
+
+registration = event.registrations.new(attributes: hash)
+has_many :registrations, dependent: :destroy # do this on the parent model, not the child model
+
+Attribute stars is of type integer, therefore cannot use %w(1 2 3 4 5) to create the array, because that will create an array of strings, not integers. 
+
 
 Video 22 One-to-Many: Nested Resources
 

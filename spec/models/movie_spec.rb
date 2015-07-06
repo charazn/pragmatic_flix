@@ -81,10 +81,29 @@ describe "A movie" do
     end
   end
 
-  # it "is valid with example attributes" do
-  #   movie = Movie.new(movie_attributes)
-  #   expect(movie.valid?).to eq(true)
-  # end
+  it "is valid with example attributes" do
+    movie = Movie.new(movie_attributes)
+    expect(movie.valid?).to eq(true)
+  end
+
+  it "has many reviews" do
+    movie = Movie.create(movie_attributes)
+    review1 = movie.reviews.new(review_attributes)
+    review2 = movie.reviews.new(review_attributes)
+    review1.valid?
+    review2.valid?
+    expect(movie.reviews.first).to eq(review1)
+    expect(movie.reviews.second).to eq(review2)
+    expect(movie.reviews).to include(review1)
+    expect(movie.reviews).to include(review2)
+  end
+
+  it "deletes the associated reviews when a movie is destroyed" do
+    movie = Movie.create(movie_attributes)
+    review1 = movie.reviews.create(review_attributes)
+    review2 = movie.reviews.create(review_attributes)
+    expect { movie.destroy }.to change(Review, :count).by(-2)
+  end
 
   # Controller tests
   # ==========================================================
