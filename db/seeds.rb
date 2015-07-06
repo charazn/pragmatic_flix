@@ -6,7 +6,8 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-movies = [ #or Movie.create!([{title:"", rating:"", total_gross:0, description:"", released_on:""}])
+#or Movie.create!([{title:"", rating:"", total_gross:0, description:"", released_on:""}])
+movies = [ 
  [
    title: "Iron Man", 
    rating: "PG-13",
@@ -75,7 +76,86 @@ movies = [ #or Movie.create!([{title:"", rating:"", total_gross:0, description:"
    ]
 ]
 
+reviews = [
+ [
+   name: "Craig Outhier",
+   stars: 4,
+   comment: "Led by Downey's career-resurrecting performance as billionaire weapons peddler Tony Stark, it proves just as indispensable to the movie's giddy escapist appeal as the seamless CGI effects and eye-popping pyrotechnics.",
+   movie_id: 1
+   ], 
+ [
+   name: "Mike Scott",
+   stars: 5,
+   comment: "His well-honed acting chops aside, a big reason the casting of Downey as Stark works so darn well is that incorrigible streak, which he somehow always has been able to balance with an irrepressible likability and which he uses to full effect here.",
+   movie_id: 1
+   ], 
+ [
+   name: "Pauline Kael",
+   stars: 1,
+   comment: "Superman doesn't have enough conviction or courage to be solidly square and dumb; it keeps pushing smarmy big emotions at us -- but half-heartedly.",
+   movie_id: 2
+   ], 
+ [
+   name: "Judith Martin",
+   stars: 4,
+   comment: "It's the simple, earth-bound quality of the film that makes this comic-book fantasy soar.",
+   movie_id: 2
+   ], 
+ [
+   name: "David Germain",
+   stars: 4,
+   comment: "With earnest, unpretentious delivery, Maguire is an eminently likable hero audiences will root for from his earliest moments as the class wimp.",
+   movie_id: 3
+   ], 
+ [
+   name: "David Edelstein",
+   stars: 3,
+   comment: "At its best, Spider-Man takes the adolescent yearning at the heart of most superhero sagas and gives it a lovely swing.",
+   movie_id: 3
+   ], 
+ [
+   name: "Andrea Gronvall",
+   stars: 3,
+   comment: "The screenplay's a hodgepodge of witchcraft, ancient Egyptian lore, pulp feminism, and a dash of S&M.",
+   movie_id: 4
+   ], 
+ [
+   name: "Joe Morgenstern",
+   stars: 2,
+   comment: "Catwoman's director, a visual-effects specialist named Pitof, is not contained by the rules of filmmaking. Scenes that make sense? Nonsense. Characters with inner lives? Utterly passe.",
+   movie_id: 4
+   ], 
+ [
+   name: "Jaryl Sim",
+   stars: 5,
+   comment: "It is the most wonderful movie I have ever watched!",
+   movie_id: 5
+   ], 
+ [
+   name: "Sunny Satrughan",
+   stars: 5,
+   comment: "Wow! Can I watch it again?!",
+   movie_id: 5
+   ], 
+ [
+   name: "Dana Stevens",
+   stars: 4,
+   comment: "American Sniper has a perspective that's recognizable from the classic Westerns Eastwood has long been associated with, both as an actor and a director. It's an existential critique of violent machismo that doubles as a celebration of violence.",
+   movie_id: 6
+   ], 
+ [
+   name: "John Powers",
+   stars: 4,
+   comment: "It speaks emotionally to audiences who sense that we lost something in Iraq, yet still want to honor the heroism of those who risked their lives for the cause, whether or not it was ultimately a great one.",
+   movie_id: 6
+   ]
+]
+
 
 movies.each do | movie |
  Movie.create!(movie) #bang method will throw exception if movie is not created
+end
+
+reviews.each do | review |
+ Review.create!(review)
 end

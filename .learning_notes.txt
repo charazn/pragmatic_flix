@@ -287,10 +287,14 @@ has_many :registrations, dependent: :destroy # do this on the parent model, not 
 
 Attribute stars is of type integer, therefore cannot use %w(1 2 3 4 5) to create the array, because that will create an array of strings, not integers. 
 
-
 Video 22 One-to-Many: Nested Resources
+A controller should only concern itself with one resource at a time.
+<%= mail_to(email_of_user, name_of_user %>
+
+localhost:3000/rails/info/routes to see all the routes just like rake routes
 
 Video 23 One-to-Many: Forms
+
 
 Video 24 One-to-Many: Logic
 

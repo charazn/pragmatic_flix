@@ -16,6 +16,15 @@ describe "View an individual movie" do
     expect(page).to have_text(movie.duration)
     # expect(page).to have_text("$300,000,000.00") #covered in the two tests below
 
+    review1 = movie.reviews.create(review_attributes(name: "Roger Ebert"))
+    review2 = movie.reviews.create(review_attributes(name: "Rotten Tomatoes"))
+
+    expect(review1).to be_valid
+    expect(review2).to be_valid
+
+    click_link "review"
+    expect(current_path).to eq(movie_reviews_path(movie))
+
   end
 
   it "shows the total gross if the total gross is more than $50m" do

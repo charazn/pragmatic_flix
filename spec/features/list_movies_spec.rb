@@ -33,7 +33,6 @@ describe "Viewing list of movies" do # example group
                           image_file_name: "spiderman.jpg")
 
     visit movies_url
-
     expect(page).to have_text("3 Movies")
 
     expect(page).to have_text(movie1.title)
@@ -52,7 +51,6 @@ describe "Viewing list of movies" do # example group
     movie = Movie.create(movie_attributes(released_on: 1.month.from_now))
   
     visit movies_url
-
     expect(page).not_to have_text(movie.title)
 
   end

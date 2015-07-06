@@ -1,0 +1,14 @@
+<header class="content-header">
+  <h1>Reviews for <%= link_to @movie.title, movie_path(@movie) %></h1>
+</header>
+
+<section>
+  <ul class="reviews">
+    <% @reviews.each do |review| %>
+      <li>
+        <p><%= review.stars %> stars by <%= review.name %> (<%= time_ago_in_words(review.updated_at) %>):</p>
+        <p>"<%= review.comment %>"</p>
+      </li>
+    <% end %>
+  </ul>
+</section>
