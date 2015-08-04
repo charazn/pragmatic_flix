@@ -6,7 +6,9 @@
   <ul class="reviews">
     <% @reviews.each do |review| %>
       <li>
-        <p><%= review.stars %> stars by <%= review.name %> (<%= time_ago_in_words(review.updated_at) %>): <%= link_to "Delete review", movie_review_path(@movie, review), method: :delete %></p> 
+        <p><%= review.stars %> stars by <%= review.name %> (<%= time_ago_in_words(review.updated_at) %>): 
+          <%= link_to "Edit", edit_movie_review_path(@movie, review) %> |
+          <%= link_to "Delete", movie_review_path(@movie, review), method: :delete %></p> 
         <p>"<%= review.comment %>"</p>
       </li>
     <% end %>
