@@ -26,7 +26,7 @@ class ReviewsController < ApplicationController
   def update
     @review = @movie.reviews.find(params[:id])
     if @review.update_attributes(review_params)
-      redirect_to :index, notice: "The review has been updated."
+      redirect_to movie_reviews_path(@movie), notice: "The review has been updated."
     else
       render :edit
     end
