@@ -13,7 +13,7 @@ describe "Create a review" do
     select 3, from: "review_stars"
     fill_in 'Comment', with: "The movie sucks!"
 
-    click_button 'Post Review'
+    click_button 'Create Review'
     expect(current_path).to eq(movie_reviews_path(movie))
 
     expect(page).to have_text('Thanks for your review!')
@@ -26,7 +26,7 @@ describe "Create a review" do
 
     visit new_movie_review_path(movie)
 
-    expect { click_button 'Post Review' }.not_to change(Review, :count)
+    expect { click_button 'Create Review' }.not_to change(Review, :count)
     expect(current_path).to eq(movie_reviews_path(Movie.last))
     expect(page).to have_text('error')
 
