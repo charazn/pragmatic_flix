@@ -105,6 +105,13 @@ describe "A movie" do
     expect { movie.destroy }.to change(Review, :count).by(-2)
   end
 
+  it "shows the average number of review stars for a movie" do
+    movie = Movie.create(movie_attributes)
+    review1 = movie.reviews.create(review_attributes(stars: 5))
+    review2 = movie.reviews.create(review_attributes(stars: 3))
+    expect(movie.average_stars).to eq(4)
+  end
+
   # Controller tests
   # ==========================================================
 
