@@ -324,8 +324,12 @@ def format_average_stars(movie)
 end
 
 Video 25 Deployment
+To seed database with random information, see Railscast #126 Populating a Database
+Gems: Populator and Faker
 
 Video 26 Wrap Up
+Watch Add jQuery and Ajax To Your Rails App free video
+https://pragmaticstudio.com/blog/2015/3/18/rails-jquery-ajax
 
 ==================================================
 
