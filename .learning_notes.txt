@@ -317,6 +317,11 @@ create_review_spec.rb
 choose "review_stars_3"
 
 Video 24 One-to-Many: Logic
+movies_helper.rb
+def format_average_stars(movie)
+  movie.average_stars.nil? ? content_tag(:strong, "No reviews") : pluralize(number_with_precision(@movie.average_stars, precision: 1), "star") 
+  #"*" * movie.average_stars.round
+end
 
 Video 25 Deployment
 
